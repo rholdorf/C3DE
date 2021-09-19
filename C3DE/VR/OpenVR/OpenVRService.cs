@@ -140,13 +140,13 @@ namespace C3DE.VR
                 {
                     m_DevicePoses[i] = m_TrackedDevices[i].mDeviceToAbsoluteTracking.ToXNA();
 
-                    if (m_System.GetTrackedDeviceClass((uint)i) == ETrackedDeviceClass.Controller)
-                    {
-                        if (m_System.GetControllerRoleForTrackedDeviceIndex((uint)i) == ETrackedControllerRole.LeftHand)
-                            m_Controllers[0].Update(m_System, i, m_DevicePoses[i]);
-                        else if (m_System.GetControllerRoleForTrackedDeviceIndex((uint)i) == ETrackedControllerRole.RightHand)
-                            m_Controllers[1].Update(m_System, i, m_DevicePoses[i]);
-                    }
+                    //if (m_System.GetTrackedDeviceClass((uint)i) == Microsoft.AspNetCore.Mvc.Controller)
+                    //{
+                    //    if (m_System.GetControllerRoleForTrackedDeviceIndex((uint)i) == ETrackedControllerRole.LeftHand)
+                    //        m_Controllers[0].Update(m_System, i, m_DevicePoses[i]);
+                    //    else if (m_System.GetControllerRoleForTrackedDeviceIndex((uint)i) == ETrackedControllerRole.RightHand)
+                    //        m_Controllers[1].Update(m_System, i, m_DevicePoses[i]);
+                    //}
                 }
             }
 

@@ -1,231 +1,41 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\MonoGame.Content.Builder.Task.3.8.0.1641\build\MonoGame.Content.Builder.Task.props" Condition="Exists('..\packages\MonoGame.Content.Builder.Task.3.8.0.1641\build\MonoGame.Content.Builder.Task.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProjectGuid>{706F6462-A341-44A2-9F16-E8ECB53F5DFB}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>C3DE</RootNamespace>
-    <AssemblyName>C3DE</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <ProductVersion>8.0.30703</ProductVersion>
     <MonoGamePlatform>Windows</MonoGamePlatform>
-    <TargetFrameworkProfile />
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
-    <PlatformTarget>x86</PlatformTarget>
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
     <OutputPath>bin\$(MonoGamePlatform)\$(Platform)\$(Configuration)\</OutputPath>
     <DefineConstants>DEBUG;TRACE;WINDOWS</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
-    <PlatformTarget>x86</PlatformTarget>
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
     <OutputPath>bin\$(MonoGamePlatform)\$(Platform)\$(Configuration)\</OutputPath>
     <DefineConstants>TRACE;WINDOWS</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <ItemGroup>
-    <Compile Include="Application.cs" />
-    <Compile Include="Asset.cs" />
-    <Compile Include="AudioManager.cs" />
-    <Compile Include="Components\AudioListener.cs" />
-    <Compile Include="Components\AudioSource.cs" />
-    <Compile Include="Components\Behaviour.cs" />
-    <Compile Include="Components\Rendering\LensFlare.cs" />
-    <Compile Include="Components\Rendering\BoundingBoxRenderer.cs" />
-    <Compile Include="Components\Controllers\Controller.cs" />
-    <Compile Include="Components\Controllers\OrbitController.cs" />
-    <Compile Include="Components\Camera.cs" />
-    <Compile Include="Components\Controllers\FirstPersonController.cs" />
-    <Compile Include="Components\Physics\BoxCollider.cs" />
-    <Compile Include="Components\Physics\Collider.cs" />
-    <Compile Include="Components\Physics\SphereCollider.cs" />
-    <Compile Include="Components\Controllers\Mobile\SwipeZone.cs" />
-    <Compile Include="Components\Controllers\Mobile\VirtualButton.cs" />
-    <Compile Include="Components\Controllers\Mobile\VirtualGamepad.cs" />
-    <Compile Include="Components\Lighting\Light.cs" />
-    <Compile Include="Components\Rendering\MeshRenderer.cs" />
-    <Compile Include="Components\Rendering\RigidbodyRenderer.cs" />
-    <Compile Include="Components\Rendering\Terrain.cs" />
-    <Compile Include="Components\Physics\Rigidbody.cs" />
-    <Compile Include="Components\VR\MotionController.cs" />
-    <Compile Include="Extensions\MatrixExtensions.cs" />
-    <Compile Include="Extensions\ModelExtensions.cs" />
-    <Compile Include="GameObjectFactory.cs" />
-    <Compile Include="Graphics\Materials\PBRMaterial.cs" />
-    <Compile Include="Graphics\Materials\Shaders\Deferred\DeferredLava.cs" />
-    <Compile Include="Graphics\Materials\Shaders\Deferred\DeferredStandardTerrain.cs" />
-    <Compile Include="Graphics\Materials\Shaders\Deferred\DeferredStandardWater.cs" />
-    <Compile Include="Graphics\Materials\Shaders\Deferred\DeferredTransparent.cs" />
-    <Compile Include="Graphics\Materials\Shaders\Deferred\DeferredUnlit.cs" />
-    <Compile Include="Graphics\Materials\Shaders\Forward\ForwardPBR.cs" />
-    <Compile Include="Graphics\Materials\Shaders\Forward\IMultipassLightingMaterial.cs" />
-    <Compile Include="Graphics\Materials\Shaders\Deferred\DeferredSkybox.cs" />
-    <Compile Include="Graphics\Materials\Shaders\Deferred\DeferredStandard.cs" />
-    <Compile Include="Graphics\Materials\Shaders\Forward\ForwardLava.cs" />
-    <Compile Include="Graphics\Materials\Shaders\Forward\ForwardSkybox.cs" />
-    <Compile Include="Graphics\Materials\Shaders\Forward\ForwardStandardTerrain.cs" />
-    <Compile Include="Graphics\Materials\Shaders\Forward\ForwardStandardWater.cs" />
-    <Compile Include="Graphics\Materials\Shaders\Forward\ForwardStandard.cs" />
-    <Compile Include="Graphics\Materials\Shaders\Forward\ForwardTransparent.cs" />
-    <Compile Include="Graphics\Materials\Shaders\Forward\ForwardUnlit.cs" />
-    <Compile Include="Graphics\Materials\Shaders\LPP\LPPShader.cs" />
-    <Compile Include="Graphics\Materials\Shaders\LPP\LPPStandard.cs" />
-    <Compile Include="Graphics\Materials\Shaders\LPP\LPPStandardTerrain.cs" />
-    <Compile Include="Graphics\Materials\Shaders\LPP\LPPStandardWater.cs" />
-    <Compile Include="Graphics\Materials\Shaders\ShaderMaterial.cs" />
-    <Compile Include="Graphics\Materials\Shaders\Forward\ForwardStandardBase.cs" />
-    <Compile Include="Graphics\Materials\StandardMaterial.cs" />
-    <Compile Include="Graphics\Materials\StandardMaterialBase.cs" />
-    <Compile Include="Graphics\PostProcessing\AverageColorFilter.cs" />
-    <Compile Include="Graphics\PostProcessing\FastBloom.cs" />
-    <Compile Include="Graphics\PostProcessing\FastPostProcessing.cs" />
-    <Compile Include="Graphics\PostProcessing\FullScreenQuadRenderer.cs" />
-    <Compile Include="Graphics\PostProcessing\GlobalFog.cs" />
-    <Compile Include="Graphics\PostProcessing\MotionBlur.cs" />
-    <Compile Include="Graphics\PostProcessing\QuadRenderer.cs" />
-    <Compile Include="Extensions\QuaternionExtensions.cs" />
-    <Compile Include="Graphics\PostProcessing\RenderTexture.cs" />
-    <Compile Include="Graphics\PostProcessing\Tonemapping.cs" />
-    <Compile Include="Graphics\PostProcessing\Vignette.cs" />
-    <Compile Include="Components\Rendering\ReflectionProbe.cs" />
-    <Compile Include="Graphics\Rendering\DeferredRenderer.cs" />
-    <Compile Include="Graphics\Rendering\DeviceState.cs" />
-    <Compile Include="Graphics\Rendering\GraphicsDeviceExtensions.cs" />
-    <Compile Include="Graphics\Rendering\LightPrePassRenderer.cs" />
-    <Compile Include="Input.cs" />
-    <Compile Include="Graphics\Materials\BillboardMaterial.cs" />
-    <Compile Include="Graphics\Materials\UnlitMaterial.cs" />
-    <Compile Include="Graphics\PostProcessing\PostProcessManager.cs" />
-    <Compile Include="Graphics\Materials\LavaMaterial.cs" />
-    <Compile Include="Graphics\Materials\StandardTerrainMaterial.cs" />
-    <Compile Include="Graphics\PostProcessing\C64Filter.cs" />
-    <Compile Include="Graphics\PostProcessing\CGAFilter.cs" />
-    <Compile Include="Graphics\PostProcessing\ConvolutionFilter.cs" />
-    <Compile Include="Graphics\PostProcessing\FilmFilter.cs" />
-    <Compile Include="Graphics\PostProcessing\GrayScaleFilter.cs" />
-    <Compile Include="Graphics\Primitives\CubeMesh.cs" />
-    <Compile Include="Graphics\Primitives\CylinderMesh.cs" />
-    <Compile Include="Graphics\Primitives\Mesh.cs" />
-    <Compile Include="Graphics\Primitives\PlaneMesh.cs" />
-    <Compile Include="Graphics\Primitives\QuadMesh.cs" />
-    <Compile Include="Graphics\Primitives\PyramidMesh.cs" />
-    <Compile Include="Graphics\Primitives\SphereMesh.cs" />
-    <Compile Include="Graphics\Primitives\TerrainMesh.cs" />
-    <Compile Include="Graphics\Primitives\TorusMesh.cs" />
-    <Compile Include="Inputs\InputDevice.cs" />
-    <Compile Include="Inputs\TouchComponent.cs" />
-    <Compile Include="Graphics\Materials\TransparentMaterial.cs" />
-    <Compile Include="Graphics\PostProcessing\SimpleBlur.cs" />
-    <Compile Include="Graphics\Rendering\BaseRenderer.cs" />
-    <Compile Include="QuadTree.cs" />
-    <Compile Include="RenderSettings.cs" />
-    <Compile Include="Resources\ResourcesHelper.cs" />
-    <Compile Include="SceneManager.cs" />
-    <Compile Include="Screen.cs" />
-    <Compile Include="Serializer.cs" />
-    <Compile Include="UI\GUISkin.cs" />
-    <Compile Include="UI\GUI.cs" />
-    <Compile Include="Graphics\TextureFactory.cs" />
-    <Compile Include="Graphics\Materials\StandardWaterMaterial.cs" />
-    <Compile Include="Components\Component.cs" />
-    <Compile Include="Components\Rendering\ModelRenderer.cs" />
-    <Compile Include="Components\Transform.cs" />
-    <Compile Include="Debug.cs" />
-    <Compile Include="EgineEventArgs.cs" />
-    <Compile Include="Engine.cs" />
-    <Compile Include="Inputs\GamepadComponent.cs" />
-    <Compile Include="Inputs\KeyboardComponent.cs" />
-    <Compile Include="Inputs\MouseComponent.cs" />
-    <Compile Include="Components\Rendering\Renderer.cs" />
-    <Compile Include="Graphics\Materials\Material.cs" />
-    <Compile Include="Graphics\PostProcessing\PostProcessPass.cs" />
-    <Compile Include="Scene.cs" />
-    <Compile Include="GameObject.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Graphics\Rendering\ForwardRenderer.cs" />
-    <Compile Include="Graphics\ShadowGenerator.cs" />
-    <Compile Include="Skybox.cs" />
-    <Compile Include="Time.cs" />
-    <Compile Include="Utils\NoiseGenerator.cs" />
-    <Compile Include="Utils\RandomHelper.cs" />
-    <Compile Include="Components\Rendering\DepthRenderer.cs" />
-    <Compile Include="VR\Oculus\MonogameExtensions.cs" />
-    <Compile Include="VR\Oculus\OculusRift.cs" />
-    <Compile Include="VR\Oculus\OculusService.cs" />
-    <Compile Include="VR\OpenVR\OpenVRController.cs" />
-    <Compile Include="VR\OpenVR\OpenVRExtensions.cs" />
-    <Compile Include="VR\VRDriver.cs" />
-    <Compile Include="VR\VRManager.cs" />
-    <Compile Include="VR\VRService.cs" />
-    <Compile Include="VR\NullVRService.cs" />
-    <Compile Include="VR\OpenVR\OpenVRService.cs" />
-    <Compile Include="VR\OpenVR\openvr_api.cs" />
-    <Compile Include="VR\OpenHMD\OpenHMD.cs" />
-    <Compile Include="VR\OpenHMD\OpenHMDService.cs" />
-    <Compile Include="Components\CoroutineManager.cs" />
-    <Compile Include="Components\Coroutine.cs" />
-  </ItemGroup>
-  <!--
-  <ItemGroup>
-    <EmbeddedResource Include="Resources\Shaders\FresnelEffect.dx11.mgfxo" />
-    <EmbeddedResource Include="Resources\Shaders\LavaEffect.dx11.mgfxo" />
-    <EmbeddedResource Include="Resources\Shaders\ReflectionEffect.dx11.mgfxo" />
-    <EmbeddedResource Include="Resources\Shaders\SimpleEffect.dx11.mgfxo" />
-    <EmbeddedResource Include="Resources\Shaders\SkyboxEffect.dx11.mgfxo" />
-    <EmbeddedResource Include="Resources\Shaders\StandardEffect.dx11.mgfxo" />
-    <EmbeddedResource Include="Resources\Shaders\TerrainEffect.dx11.mgfxo" />
-    <EmbeddedResource Include="Resources\Shaders\ToonEffect.dx11.mgfxo" />
-    <EmbeddedResource Include="Resources\Shaders\TransparentEffect.dx11.mgfxo" />
-    <EmbeddedResource Include="Resources\Shaders\WaterEffect.dx11.mgfxo" />
-  </ItemGroup>-->
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Jitter.Standard">
       <HintPath>..\Deps\Jitter.Standard\Jitter.Standard.dll</HintPath>
     </Reference>
-    <Reference Include="MonoGame.Framework, Version=3.8.0.1641, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MonoGame.Framework.DesktopGL.3.8.0.1641\lib\net452\MonoGame.Framework.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="SharpDX, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
-      <HintPath>..\packages\SharpDX.4.2.0\lib\net45\SharpDX.dll</HintPath>
-    </Reference>
-    <Reference Include="SharpDX.Direct3D11, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
-      <HintPath>..\packages\SharpDX.Direct3D11.4.2.0\lib\net45\SharpDX.Direct3D11.dll</HintPath>
-    </Reference>
-    <Reference Include="SharpDX.DXGI, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
-      <HintPath>..\packages\SharpDX.DXGI.4.2.0\lib\net45\SharpDX.DXGI.dll</HintPath>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.XML" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <PackageReference Include="MonoGame.Content.Builder.Task" Version="3.8.0.1641" />
+    <PackageReference Include="MonoGame.Framework.DesktopGL" Version="3.8.0.1641" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="SharpDX.Direct3D11" Version="4.2.0" />
+    <PackageReference Include="Microsoft.DotNet.UpgradeAssistant.Extensions.Default.Analyzers" Version="0.3.246501">
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="..\packages\MonoGame.Framework.DesktopGL.3.8.0.1641\build\MonoGame.Framework.DesktopGL.targets" Condition="Exists('..\packages\MonoGame.Framework.DesktopGL.3.8.0.1641\build\MonoGame.Framework.DesktopGL.targets')" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('..\packages\MonoGame.Framework.DesktopGL.3.8.0.1641\build\MonoGame.Framework.DesktopGL.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\MonoGame.Framework.DesktopGL.3.8.0.1641\build\MonoGame.Framework.DesktopGL.targets'))" />
-    <Error Condition="!Exists('..\packages\MonoGame.Content.Builder.Task.3.8.0.1641\build\MonoGame.Content.Builder.Task.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\MonoGame.Content.Builder.Task.3.8.0.1641\build\MonoGame.Content.Builder.Task.props'))" />
-    <Error Condition="!Exists('..\packages\MonoGame.Content.Builder.Task.3.8.0.1641\build\MonoGame.Content.Builder.Task.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\MonoGame.Content.Builder.Task.3.8.0.1641\build\MonoGame.Content.Builder.Task.targets'))" />
-  </Target>
-  <Import Project="..\packages\MonoGame.Content.Builder.Task.3.8.0.1641\build\MonoGame.Content.Builder.Task.targets" Condition="Exists('..\packages\MonoGame.Content.Builder.Task.3.8.0.1641\build\MonoGame.Content.Builder.Task.targets')" />
+  <ItemGroup>
+    <Compile Remove="AStar.cs" />
+    <Compile Remove="Components\Controllers\OrientationController.cs" />
+    <Compile Remove="Extensions\Vector3Extensions.cs" />
+    <Compile Remove="ICloneable.cs" />
+    <Compile Remove="IEngine.cs" />
+  </ItemGroup>
 </Project>
