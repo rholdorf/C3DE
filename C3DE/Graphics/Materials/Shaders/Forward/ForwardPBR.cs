@@ -72,7 +72,7 @@ namespace C3DE.Graphics.Materials.Shaders.Forward
             _effect.Parameters["IrradianceMap"].SetValue(Scene.current.RenderSettings.skybox.IrradianceTexture);
 
 #if !DESKTOP
-            _effect.Parameters["Debug"].SetValue(1);
+            //_effect.Parameters["Debug"].SetValue(1);
 #endif
         }
 

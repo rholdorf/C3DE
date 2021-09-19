@@ -54,9 +54,9 @@ namespace C3DE.Graphics.Materials.Shaders
             m_EPMainTexture.SetValue(m_Skybox.Texture);
             m_EPWorld.SetValue(m_Skybox.WorldMatrix);
 #if !DESKTOP
-            m_EPFogEnabled.SetValue(m_Skybox.FogSupported);
-            m_EPFogColor.SetValue(Scene.current.RenderSettings.fogColor);
-            m_EPFogData.SetValue(m_Skybox.OverrideFog ? m_Skybox.CustomFogData : Scene.current.RenderSettings.fogData);
+            //m_EPFogEnabled.SetValue(m_Skybox.FogSupported);
+            //m_EPFogColor.SetValue(Scene.current.RenderSettings.fogColor);
+            //m_EPFogData.SetValue(m_Skybox.OverrideFog ? m_Skybox.CustomFogData : Scene.current.RenderSettings.fogData);
 #endif
             m_DefaultPass.Apply();
         }

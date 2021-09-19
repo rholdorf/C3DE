@@ -106,8 +106,8 @@ namespace C3DE.Graphics.Materials.Shaders
             m_EPLightType.SetValue((int)light.TypeLight);
 
 #if !DESKTOP
-            m_EPFogColor.SetValue(Scene.current.RenderSettings.fogColor);
-            m_EPFogData.SetValue(Scene.current.RenderSettings.fogData);
+            //m_EPFogColor.SetValue(Scene.current.RenderSettings.fogColor);
+            //m_EPFogData.SetValue(Scene.current.RenderSettings.fogData);
 #endif
             m_EPShadowStrength.SetValue(light._shadowGenerator.ShadowStrength);
             m_EPShadowBias.SetValue(light._shadowGenerator.ShadowBias);
