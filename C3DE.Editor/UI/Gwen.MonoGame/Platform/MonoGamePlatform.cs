@@ -191,7 +191,7 @@ namespace Gwen.Platform.MonoGame
 
         public void SetCursor(Cursor cursor)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
 

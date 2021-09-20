@@ -10,7 +10,7 @@ namespace C3DE.Editor.GameComponents
     {
         private BasicEffect _effect;
         private VertexPositionColor[] _vertexData;
-        private Color _lineColor = Color.AntiqueWhite;
+        private Color _lineColor = Color.Purple;
         private Color _highlightColor = Color.DarkBlue;
         private int _gridSpacing = 1;
         private int _gridSize = 512;
