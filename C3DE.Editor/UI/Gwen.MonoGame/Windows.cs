@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading;
-using System.Windows.Forms;
 using System.IO;
 using System.Linq;
 
@@ -22,23 +21,6 @@ namespace Gwen.Platform.Windows
 		{
 			// code from http://forums.getpaint.net/index.php?/topic/13712-trouble-accessing-the-clipboard/page__view__findpost__p__226140
 			string ret = String.Empty;
-			Thread staThread = new Thread(
-				() =>
-				{
-					try
-					{
-						if (!Clipboard.ContainsText())
-							return;
-						ret = Clipboard.GetText();
-					}
-					catch (Exception)
-					{
-						return;
-					}
-				});
-			staThread.SetApartmentState(ApartmentState.STA);
-			staThread.Start();
-			staThread.Join();
 			// at this point either you have clipboard data or an exception
 			return ret;
 		}
@@ -50,25 +32,7 @@ namespace Gwen.Platform.Windows
 		/// <returns>True if succeeded.</returns>
 		public bool SetClipboardText(string text)
 		{
-			bool ret = false;
-			Thread staThread = new Thread(
-				() =>
-				{
-					try
-					{
-						Clipboard.SetText(text);
-						ret = true;
-					}
-					catch (Exception)
-					{
-						return;
-					}
-				});
-			staThread.SetApartmentState(ApartmentState.STA);
-			staThread.Start();
-			staThread.Join();
-			// at this point either you have clipboard data or an exception
-			return ret;
+			return true;
 		}
 
 		/// <summary>
@@ -86,7 +50,7 @@ namespace Gwen.Platform.Windows
 		/// <param name="cursor">Cursor type.</param>
 		public void SetCursor(Cursor cursor)
 		{
-			System.Windows.Forms.Cursor.Current = m_CursorMap[cursor];
+			
 		}
 
 		/// <summary>
@@ -195,20 +159,6 @@ namespace Gwen.Platform.Windows
 		{
 			return new FileStream(path, isWritable ? FileMode.Create : FileMode.Open, isWritable ? FileAccess.Write : FileAccess.Read);
 		}
-
-		private static readonly Dictionary<Cursor, System.Windows.Forms.Cursor> m_CursorMap = new Dictionary<Cursor, System.Windows.Forms.Cursor>
-		{
-			{ Cursor.Normal, System.Windows.Forms.Cursors.Arrow },
-			{ Cursor.Beam, System.Windows.Forms.Cursors.IBeam },
-			{ Cursor.SizeNS, System.Windows.Forms.Cursors.SizeNS },
-			{ Cursor.SizeWE, System.Windows.Forms.Cursors.SizeWE },
-			{ Cursor.SizeNWSE, System.Windows.Forms.Cursors.SizeNWSE },
-			{ Cursor.SizeNESW, System.Windows.Forms.Cursors.SizeNESW },
-			{ Cursor.SizeAll, System.Windows.Forms.Cursors.SizeAll },
-			{ Cursor.No, System.Windows.Forms.Cursors.No },
-			{ Cursor.Wait, System.Windows.Forms.Cursors.WaitCursor },
-			{ Cursor.Finger, System.Windows.Forms.Cursors.Hand }
-		};
 
 		private class SpecialFolder : ISpecialFolder
 		{

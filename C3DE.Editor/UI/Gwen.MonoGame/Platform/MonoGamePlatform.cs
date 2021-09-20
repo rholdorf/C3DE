@@ -4,7 +4,6 @@ using System.IO;
 
 #if WINDOWS
 using System.Threading;
-using System.Windows.Forms;
 #endif
 
 #if WINDOWS || LINUX || MONOMAC || ANDROID || IOS
@@ -18,71 +17,6 @@ namespace Gwen.Platform.MonoGame
 		private DateTime m_FirstTime = DateTime.Now;
 
 		/// <summary>
-		/// Gets text from clipboard.
-		/// </summary>
-		/// <returns>Clipboard text.</returns>
-		public string GetClipboardText()
-		{
-#if WINDOWS
-			// code from http://forums.getpaint.net/index.php?/topic/13712-trouble-accessing-the-clipboard/page__view__findpost__p__226140
-			string ret = String.Empty;
-			Thread staThread = new Thread(
-				() =>
-				{
-					try
-					{
-						if (!Clipboard.ContainsText())
-							return;
-						ret = Clipboard.GetText();
-					}
-					catch (Exception)
-					{
-						return;
-					}
-				});
-			staThread.SetApartmentState(ApartmentState.STA);
-			staThread.Start();
-			staThread.Join();
-			// at this point either you have clipboard data or an exception
-			return ret;
-#else
-			return null;
-#endif
-		}
-
-		/// <summary>
-		/// Sets the clipboard text.
-		/// </summary>
-		/// <param name="text">Text to set.</param>
-		/// <returns>True if succeeded.</returns>
-		public bool SetClipboardText(string text)
-		{
-#if WINDOWS
-			bool ret = false;
-			Thread staThread = new Thread(
-				() =>
-				{
-					try
-					{
-						Clipboard.SetText(text);
-						ret = true;
-					}
-					catch (Exception)
-					{
-						return;
-					}
-				});
-			staThread.SetApartmentState(ApartmentState.STA);
-			staThread.Start();
-			staThread.Join();
-			// at this point either you have clipboard data or an exception
-			return ret;
-#else
-			return false;
-#endif
-		}
-
-		/// <summary>
 		/// Gets elapsed time since this class was initalized.
 		/// </summary>
 		/// <returns>Time interval in seconds.</returns>
@@ -91,16 +25,6 @@ namespace Gwen.Platform.MonoGame
 			return (float)((DateTime.Now - m_FirstTime).TotalSeconds);
 		}
 
-		/// <summary>
-		/// Changes the mouse cursor.
-		/// </summary>
-		/// <param name="cursor">Cursor type.</param>
-		public void SetCursor(Cursor cursor)
-		{
-#if WINDOWS
-			System.Windows.Forms.Cursor.Current = m_CursorMap[cursor];
-#endif
-		}
 
 		/// <summary>
 		/// Get special folders of the system.
@@ -265,24 +189,14 @@ namespace Gwen.Platform.MonoGame
 #endif
 		}
 
-#if WINDOWS
-		private static readonly Dictionary<Cursor, System.Windows.Forms.Cursor> m_CursorMap = new Dictionary<Cursor, System.Windows.Forms.Cursor>
-		{
-			{ Cursor.Normal, System.Windows.Forms.Cursors.Arrow },
-			{ Cursor.Beam, System.Windows.Forms.Cursors.IBeam },
-			{ Cursor.SizeNS, System.Windows.Forms.Cursors.SizeNS },
-			{ Cursor.SizeWE, System.Windows.Forms.Cursors.SizeWE },
-			{ Cursor.SizeNWSE, System.Windows.Forms.Cursors.SizeNWSE },
-			{ Cursor.SizeNESW, System.Windows.Forms.Cursors.SizeNESW },
-			{ Cursor.SizeAll, System.Windows.Forms.Cursors.SizeAll },
-			{ Cursor.No, System.Windows.Forms.Cursors.No },
-			{ Cursor.Wait, System.Windows.Forms.Cursors.WaitCursor },
-			{ Cursor.Finger, System.Windows.Forms.Cursors.Hand }
-		};
-#endif
+        public void SetCursor(Cursor cursor)
+        {
+            throw new NotImplementedException();
+        }
+
 
 #if WINDOWS || LINUX || MONOMAC || ANDROID || IOS
-		private class SpecialFolder : ISpecialFolder
+        private class SpecialFolder : ISpecialFolder
 		{
 			public SpecialFolder(string name, string category, string path)
 			{

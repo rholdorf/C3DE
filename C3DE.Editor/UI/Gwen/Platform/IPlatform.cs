@@ -34,19 +34,6 @@ namespace Gwen.Platform
 	public interface IPlatform
 	{
 		/// <summary>
-		/// Gets text from clipboard.
-		/// </summary>
-		/// <returns>Clipboard text.</returns>
-		string GetClipboardText();
-
-		/// <summary>
-		/// Sets the clipboard text.
-		/// </summary>
-		/// <param name="text">Text to set.</param>
-		/// <returns>True if succeeded.</returns>
-		bool SetClipboardText(string text);
-
-		/// <summary>
 		/// Gets elapsed time. Initialization time is platform specific.
 		/// </summary>
 		/// <returns>Time interval in seconds.</returns>
